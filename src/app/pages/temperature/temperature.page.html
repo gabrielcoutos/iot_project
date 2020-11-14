@@ -19,10 +19,13 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <p>Maior valor registrado: {{dweet._with[0].content.lumMax}}</p>
+              <p>Maior valor registrado: {{dweet._with[0].content.tempMax}}</p>
             </ion-col>
             <ion-col>
-              <p>Menor valor registrado: {{dweet._with[0].content.lumMin}}</p>
+              <p>Menor valor registrado: {{dweet._with[0].content.tempMin}}</p>
+            </ion-col>
+            <ion-col>
+              <p>Status: <ion-label color = {{color_status}}>{{status}}</ion-label></p>
             </ion-col>
           </ion-row>
         </ion-grid>

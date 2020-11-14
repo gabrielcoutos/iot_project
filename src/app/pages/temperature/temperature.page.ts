@@ -14,6 +14,8 @@ export class TemperaturePage implements OnInit {
   private time:any;
   private dataPlot:Array<any>
   options:Object;
+  private status: string
+  private color_status: string
 
   constructor(private dweetService: DweetService, public router: Router) { 
     this.time = setInterval(() => {this.getLastDweets()}, 3000)
@@ -48,6 +50,7 @@ export class TemperaturePage implements OnInit {
     this.dweet = this.dweetService.preencherDweet(data);
     this.loadDataForPlot(this.dweet)
     this.plotChart();
+    this.buildCurrentColor();
   }
 
   private loadDataForPlot(dweet: Dweet) {
@@ -55,6 +58,27 @@ export class TemperaturePage implements OnInit {
       let epoch = new Date(_with.created).getTime()
       this.dataPlot.push([epoch, _with.content.$temperatura])
     }
+  }
+
+  private buildCurrentColor(){
+    switch (this.dweet.with[0].content.$current_color){
+      case 'vermelha':
+        this.status = 'Quente'
+        this.color_status = 'danger'
+        break;
+      case 'verde':
+        this.status = "Ok"
+        this.color_status = "success"
+        break;
+      case 'azul':
+        this.status = 'Frio'
+        this.color_status = "primary"
+        break;
+      default:
+        this.status = 'Sem status'
+        this.color_status = 'light'
+    }
+    console.log(this.status)
   }
 
   private plotChart() {
