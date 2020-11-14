@@ -14,6 +14,7 @@ export class LightPage implements OnInit {
   private isLoading:boolean=true;
   private time:any;
   private dataPlot:Array<any>
+  private riskLum: boolean
   options:Object;
 
   constructor(private dweetService: DweetService, public router: Router) { 
@@ -49,6 +50,7 @@ export class LightPage implements OnInit {
     this.dweet = this.dweetService.preencherDweet(data);
     this.loadDataForPlot(this.dweet)
     this.plotChart();
+    this.calculateRisk();
   }
 
   private loadDataForPlot(dweet: Dweet) {
@@ -77,6 +79,14 @@ export class LightPage implements OnInit {
         pointInterval: 60 * 60
       }]
     };
+  }
+
+  private calculateRisk(){
+    if (this.dweet.with[0].content.$status_buzzer) {
+      this.riskLum = true
+    } else {
+      this.riskLum = false
+    }
   }
 
 }
