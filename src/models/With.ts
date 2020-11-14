@@ -1,4 +1,5 @@
 import Content from './Content'
+
 export default class With {
 
     private _thing:string;
@@ -14,7 +15,6 @@ export default class With {
         this._date = date;
         this._time = time;
     }
-
 
     /**
      * Getter thing

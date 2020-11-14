@@ -1,4 +1,4 @@
-import With from'./with';
+import With from'./With';
 
 export default class Dweet {
     private _this:string;

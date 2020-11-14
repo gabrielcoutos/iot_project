@@ -1,23 +1,23 @@
 export default class Content {
-    private temperature: string = "0"
-    constructor(temperature: string){
-        this.temperature = temperature
+    private temperatura: string = "0"
+    constructor(temperatura: string){
+        this.temperatura = temperatura
     }
 
     /**
-     * Getter $temperature
+     * Getter $temperatura
      * @return {string }
      */
-	public get $temperature(): string  {
-		return this.temperature;
+	public get $temperatura(): string  {
+		return this.temperatura;
 	}
 
     /**
-     * Setter $temperature
+     * Setter $temperatura
      * @param {string } value
      */
-	public set $temperature(value: string ) {
-		this.temperature = value;
+	public set $temperatura(value: string ) {
+		this.temperatura = value;
 	}
 
 }
