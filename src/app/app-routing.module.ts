@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'temperature',
     loadChildren: () => import('./pages/temperature/temperature.module').then( m => m.TemperaturePageModule)
+  },
+  {
+    path: 'light',
+    loadChildren: () => import('./pages/light/light.module').then( m => m.LightPageModule)
   }
 ];
 

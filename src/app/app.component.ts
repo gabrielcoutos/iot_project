@@ -21,7 +21,12 @@ export class AppComponent implements OnInit {
       title: 'Temperatura',
       url: '/temperature',
       icon: 'thermometer'
-    }
+    },
+    {
+      title: 'Luminosidade',
+      url: '/light',
+      icon: 'sunny'
+    },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 

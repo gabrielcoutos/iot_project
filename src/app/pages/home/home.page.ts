@@ -17,4 +17,8 @@ export class HomePage implements OnInit {
     this.router.navigate(['temperature'])
   }
 
+  goToLightPage(){
+    this.router.navigate(['light'])
+  }
+
 }
