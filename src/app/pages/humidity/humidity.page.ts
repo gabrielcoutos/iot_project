@@ -4,18 +4,17 @@ import { DweetService } from 'src/app/services/dweet.service'
 import Dweet from 'src/models/Dweet'
 
 @Component({
-  selector: 'app-temperature',
-  templateUrl: './temperature.page.html',
-  styleUrls: ['./temperature.page.scss'],
+  selector: 'app-humidity',
+  templateUrl: './humidity.page.html',
+  styleUrls: ['./humidity.page.scss'],
 })
-export class TemperaturePage implements OnInit {
+export class HumidityPage implements OnInit {
+
   private dweet:Dweet
   private isLoading:boolean=true;
   private time:any;
   private dataPlot:Array<any>
   options:Object;
-  private status: string
-  private color_status: string
 
   constructor(private dweetService: DweetService, public router: Router) { 
     this.time = setInterval(() => {this.getLastDweets()}, 5000)
@@ -50,33 +49,12 @@ export class TemperaturePage implements OnInit {
     this.dweet = this.dweetService.preencherDweet(data);
     this.loadDataForPlot(this.dweet)
     this.plotChart();
-    this.buildCurrentColor();
   }
 
   private loadDataForPlot(dweet: Dweet) {
     for (let _with of dweet.with){
       let epoch = new Date(_with.created).getTime()
-      this.dataPlot.push([epoch, _with.content.$temperatura])
-    }
-  }
-
-  private buildCurrentColor(){
-    switch (this.dweet.with[0].content.$current_color){
-      case 'vermelha':
-        this.status = 'Quente'
-        this.color_status = 'danger'
-        break;
-      case 'verde':
-        this.status = "Ok"
-        this.color_status = "success"
-        break;
-      case 'azul':
-        this.status = 'Frio'
-        this.color_status = "primary"
-        break;
-      default:
-        this.status = 'Sem status'
-        this.color_status = 'light'
+      this.dataPlot.push([epoch, _with.content.$umidade])
     }
   }
 
@@ -88,13 +66,13 @@ export class TemperaturePage implements OnInit {
       yAxis: {
         labels: {
           formatter: function() {
-            return this.value + "ºC";
+            return this.value + "%";
           }
         },
       },
-      title: {text: 'Temperatura'},
+      title: {text: 'Umidade'},
       series: [{
-        name: 'temperatura',
+        name: 'umidade',
         data: this.dataPlot.reverse(),
         pointInterval: 60 * 60
       }]

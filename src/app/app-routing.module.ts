@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'light',
     loadChildren: () => import('./pages/light/light.module').then( m => m.LightPageModule)
+  },
+  {
+    path: 'humidity',
+    loadChildren: () => import('./pages/humidity/humidity.module').then( m => m.HumidityPageModule)
   }
 ];
 

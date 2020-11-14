@@ -17,7 +17,7 @@ export class LightPage implements OnInit {
   options:Object;
 
   constructor(private dweetService: DweetService, public router: Router) { 
-    this.time = setInterval(() => {this.getLastDweets()}, 3000)
+    this.time = setInterval(() => {this.getLastDweets()}, 5000)
   }
 
   ngOnInit() {
